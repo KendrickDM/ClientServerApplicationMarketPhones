@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>MarketPhones</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="/path/to/css/font-awesome.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <style>
+        .dropdown-menu{
+            background-color:#343a40;
+        }
+        .dropdown-item{
+            background-color: #343a40;
+        }
+        .dropdown-item:hover{
+            background-color: darkgray;
+        }
+        html {height: 100%;}
+        body {
+            min-height: 100%;
+            display: grid;
+            grid-template-rows: 1fr auto;
+        }
+        .footer {
+            grid-row-start: 2;
+            grid-row-end: 3;
+            background-color: #343a40;
+        }
+        .colorText{
+            color:white;
+        }
+        .a{
+            color:darkgray;
+        }
+        .a:hover{
+            color: white;
+        }
+        hr{
+            background-color:white;
+        }
+
+        .img{
+            height: 490px;
+            /*margin-top: -78px;*/
+        }
+
+    </style>
+</head>
+<body>
+<div class="content">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">MarketPhones</a>
+
+    <!-- Links -->
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="/main-page">HOME</a>
+        </li>
+
+        <!-- Dropdown -->
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                TABLES
+            </a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item nav-link" href="/phones">Phone</a>
+                <a class="dropdown-item nav-link" href="/manufacturers">Manufacturer</a>
+                <a class="dropdown-item nav-link" href="/suppliers">Supplier</a>
+                <a class="dropdown-item nav-link" href="/customers">Customer</a>
+                <a class="dropdown-item nav-link" href="/staffs">Staff</a>
+                <a class="dropdown-item nav-link" href="/orders">Orders Phones</a>
+            </div>
+        </li>
+    </ul>
+</nav>
+    <div class="img">
+    <img src="https://psv4.userapi.com/c856216/u171881457/docs/d2/cde09f303346/logo.png?extra=7s6Kb7Y7mDz0aljuGUPFzw6-_Cyz2dgmJjDshN8AVBh6M0PWBhe3O1XLUQtoVFYZpv9mzPHnnR-O20Ia_1LiJPEP5TyxWdHmi5AClC74mitDstYuSMTSG5YGZM5dy_bZTfB0UiHkxlcu8B3wF9Qt3g" class="img-fluid">
+    </div>
+</div>
+<!-- Footer -->
+<footer class="footer page-footer font-small indigo">
+
+    <!-- Footer Links -->
+    <div class="container">
+
+        <!-- Grid row-->
+        <div class="row text-center d-flex justify-content-center pt-5 mb-3">
+
+            <!-- Grid column -->
+            <div class="col-md-2 mb-3">
+                <h6 class="text-uppercase">
+                    <a class="a nav-link" href="#!">About us</a>
+                </h6>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-2 mb-3">
+                <h6 class="text-uppercase">
+                    <a class="a nav-link" href="#!">Products</a>
+                </h6>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-2 mb-3">
+                <h6 class="text-uppercase">
+                    <a class="a nav-link" href="#!">Awards</a>
+                </h6>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-2 mb-3">
+                <h6 class="text-uppercase">
+                    <a class="a nav-link" href="#!">Help</a>
+                </h6>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-2 mb-3">
+                <h6 class="text-uppercase">
+                    <a class="a nav-link" href="#!">Contact</a>
+                </h6>
+            </div>
+            <!-- Grid column -->
+
+        </div>
+        <!-- Grid row-->
+        <hr class="rgba-white-light" style="margin: 0 15%;">
+
+        <!-- Grid row-->
+        <div class="row d-flex text-center justify-content-center mb-md-0 mb-4">
+
+            <!-- Grid column -->
+            <div class=" colorText col-md-8 col-12 mt-5">
+                <p style="line-height: 1.7rem">Welcome to the MarketPhones online store!
+                    Your attention is presented to the main page of the MarketPhones online store.
+                    In this section, you can easily and simply navigate through all sections of this section.
+                    You can see that you are given the opportunity to add,
+                    edit and delete records from the table. To use this function, you need to click on the button at the bottom of the table.</p>
+            </div>
+            <!-- Grid column -->
+
+        </div>
+        <!-- Grid row-->
+    </div>
+    <!-- Footer Links -->
+
+    <!-- Copyright -->
+    <div class="colorText footer-copyright text-center py-3">© 2020 Copyright:
+        <a class="a nav-link" href="/main-page"> MarketPhones.com</a>
+    </div>
+    <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+</body>
+</html>

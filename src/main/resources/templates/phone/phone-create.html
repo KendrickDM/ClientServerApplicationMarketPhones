@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Phone</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <style>
+        .btn-primary{
+            background-color: #343a40;
+            color: white;
+            border-color: darkgray;
+        }
+        .btn-primary:hover{
+            background-color: darkgray;
+            color: white;
+            border-color: darkgray;
+        }
+        .mx-auto{
+            width: 300px;
+        }
+        .header-h1 {
+            position: relative;
+            margin-bottom: .5rem;
+        }
+        .header-h1 h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0;
+            padding-left: 3rem;
+            color: #343a40;
+        }
+        .header-h1 h1::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2.25rem;
+            height: 2.25rem;
+            background: #343a40;
+        }
+        .header-h1 h1::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 2rem;
+            width: 100%;
+            height: .25rem;
+            background-color: #343a40;
+        }
+        .dropdown-menu{
+            background-color:#343a40;
+        }
+        .dropdown-item{
+            background-color: #343a40;
+        }
+        .dropdown-item:hover{
+            background-color: darkgray;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a class="navbar-brand" href="#">MarketPhones</a>
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="/main-page">HOME</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                TABLES
+            </a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item nav-link" href="/phones">Phone</a>
+                <a class="dropdown-item nav-link" href="/manufacturers">Manufacturer</a>
+                <a class="dropdown-item nav-link" href="/suppliers">Supplier</a>
+                <a class="dropdown-item nav-link" href="/customers">Customer</a>
+                <a class="dropdown-item nav-link" href="/staffs">Staff</a>
+                <a class="dropdown-item nav-link" href="/orders">Orders Phones</a>
+            </div>
+        </li>
+    </ul>
+</nav>
+<div class="header-h1"><h1>Phone</h1></div>
+<p>
+<form action="#" th:action="@{/phone-create}" th:object="${phone}" method="post">
+    <div class="form-group mx-auto">
+        <label for="idManufacturer">Manufacturer</label>
+        <select class="form-control" id="idManufacturer" name="idManufacturer" required>
+            <option value="Отсутствует">Choose Manufacturer</option>
+            <option th:each="manufacturer : ${manufacturers}" th:value="${manufacturer.idM}" th:text="${manufacturer.manf}"></option>
+        </select>
+    </div>
+    <div class="form-group mx-auto">
+        <label for="model">Model</label>
+        <input required type="text" class="form-control" th:field="*{model}" id="model" placeholder="Model">
+
+        <th:block th:if="${#fields.hasErrors('model')}">
+            <div th:errorclass="invalid-input" th:errors="*{model}"></div>
+        </th:block>
+    </div>
+    <div class="form-group mx-auto">
+        <label for="idSupplier">Supplier</label>
+        <select class="form-control" id="idSupplier" name="idSupplier" required>
+            <option value="Отсутствует">Choose Supplier</option>
+            <option th:each="supplier : ${suppliers}" th:value="${supplier.idS}" th:text="${supplier.organization}"></option>
+        </select>
+    </div>
+    <div class="form-group mx-auto">
+        <label for="color">Color</label>
+        <input required type="text" class="form-control" th:field="*{color}" id="color" placeholder="Color">
+
+        <th:block th:if="${#fields.hasErrors('color')}">
+            <div th:errorclass="invalid-input" th:errors="*{color}"></div>
+        </th:block>
+    </div>
+    <div class="form-group mx-auto">
+        <label for="typePhone">TypePhone</label>
+        <input required type="text" class="form-control" th:field="*{typePhone}" id="typePhone" placeholder="TypePhone">
+
+        <th:block th:if="${#fields.hasErrors('typePhone')}">
+            <div th:errorclass="invalid-input" th:errors="*{typePhone}"></div>
+        </th:block>
+    </div>
+    <div class="form-group mx-auto">
+        <label for="scrDiagonal">ScrDiagonal</label>
+        <input required type="text" class="form-control" th:field="*{scrDiagonal}" id="scrDiagonal" placeholder="ScrDiagonal">
+
+        <th:block th:if="${#fields.hasErrors('scrDiagonal')}">
+            <div th:errorclass="invalid-input" th:errors="*{scrDiagonal}"></div>
+        </th:block>
+    </div>
+    <div class="form-group mx-auto">
+        <label for="platform">Platform</label>
+        <input required type="text" class="form-control" th:field="*{platform}" id="platform" placeholder="Platform">
+
+        <th:block th:if="${#fields.hasErrors('platform')}">
+            <div th:errorclass="invalid-input" th:errors="*{platform}"></div>
+        </th:block>
+    </div>
+    <div class="form-group mx-auto">
+        <label for="builtInMemory">BuiltInMemory</label>
+        <input required type="text" class="form-control" th:field="*{builtInMemory}" id="builtInMemory" placeholder="BuiltInMemory">
+
+        <th:block th:if="${#fields.hasErrors('builtInMemory')}">
+            <div th:errorclass="invalid-input" th:errors="*{builtInMemory}"></div>
+        </th:block>
+    </div>
+    <div class="form-group mx-auto">
+        <label for="scrResolution">ScrResolution</label>
+        <input required type="text" class="form-control" th:field="*{scrResolution}" id="scrResolution" placeholder="ScrResolution">
+
+        <th:block th:if="${#fields.hasErrors('scrResolution')}">
+            <div th:errorclass="invalid-input" th:errors="*{scrResolution}"></div>
+        </th:block>
+    </div>
+    <div class="form-group mx-auto">
+        <label for="batteryCapacity">BatteryCapacity</label>
+        <input required type="text" class="form-control" th:field="*{batteryCapacity}" id="batteryCapacity" placeholder="BatteryCapacity">
+
+        <th:block th:if="${#fields.hasErrors('batteryCapacity')}">
+            <div th:errorclass="invalid-input" th:errors="*{batteryCapacity}"></div>
+        </th:block>
+    </div>
+    <div class="form-group mx-auto">
+        <label for="numSimCards">NumSimCards</label>
+        <input required type="text" class="form-control" th:field="*{numSimCards}" id="numSimCards" placeholder="NumSimCards">
+
+        <th:block th:if="${#fields.hasErrors('numSimCards')}">
+            <div th:errorclass="invalid-input" th:errors="*{numSimCards}"></div>
+        </th:block>
+    </div>
+    <div class="form-group mx-auto">
+        <label for="typeSimCards">TypeSimCards</label>
+        <input required type="text" class="form-control" th:field="*{typeSimCards}" id="typeSimCards" placeholder="TypeSimCards">
+
+        <th:block th:if="${#fields.hasErrors('typeSimCards')}">
+            <div th:errorclass="invalid-input" th:errors="*{typeSimCards}"></div>
+        </th:block>
+    </div>
+    <p>
+    <div class="mx-auto">
+        <input type="submit" class="btn btn-primary btn-lg btn-block" role="button" aria-pressed="true" value="Add Phone">
+    </div>
+    </p>
+</form>
+</body>
+</html>

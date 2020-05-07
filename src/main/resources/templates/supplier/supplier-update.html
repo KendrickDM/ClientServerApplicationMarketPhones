@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Supplier</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <style>
+        .btn-primary{
+            background-color: #343a40;
+            color: white;
+            border-color: darkgray;
+        }
+        .btn-primary:hover{
+            background-color: darkgray;
+            color: white;
+            border-color: darkgray;
+        }
+        .mx-auto{
+            width: 300px;
+        }
+        .header-h1 {
+            position: relative;
+            margin-bottom: .5rem;
+        }
+        .header-h1 h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0;
+            padding-left: 3rem;
+            color: #343a40;
+        }
+        .header-h1 h1::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2.25rem;
+            height: 2.25rem;
+            background: #343a40;
+        }
+        .header-h1 h1::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 2rem;
+            width: 100%;
+            height: .25rem;
+            background-color: #343a40;
+        }
+        .dropdown-menu{
+            background-color:#343a40;
+        }
+        .dropdown-item{
+            background-color: #343a40;
+        }
+        .dropdown-item:hover{
+            background-color: darkgray;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a class="navbar-brand" href="#">MarketPhones</a>
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="/main-page">HOME</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                TABLES
+            </a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item nav-link" href="/phones">Phone</a>
+                <a class="dropdown-item nav-link" href="/manufacturers">Manufacturer</a>
+                <a class="dropdown-item nav-link" href="/suppliers">Supplier</a>
+                <a class="dropdown-item nav-link" href="/customers">Customer</a>
+                <a class="dropdown-item nav-link" href="/staffs">Staff</a>
+                <a class="dropdown-item nav-link" href="/orders">Orders Phones</a>
+            </div>
+        </li>
+    </ul>
+</nav>
+<div class="header-h1"><h1>Supplier</h1></div>
+<p>
+<form action="#" th:action="@{/supplier-update}" th:object="${supplier}" method="post">
+
+    <div class="form-group mx-auto">
+        <label for="idS">IdSupplier</label>
+        <input readonly type="number" class="form-control" th:field="*{idS}" id="idS" placeholder="IdSupplier">
+    </div>
+    <div class="form-group mx-auto">
+        <label for="organization">Organization</label>
+        <input required type="text" class="form-control" th:field="*{organization}" id="organization" placeholder="Organization">
+
+        <th:block th:if="${#fields.hasErrors('organization')}">
+            <div th:errorclass="invalid-input" th:errors="*{organization}"></div>
+        </th:block>
+    </div>
+    <div class="form-group mx-auto">
+        <label for="representative">Representative</label>
+        <input required type="text" class="form-control" th:field="*{representative}" id="representative" placeholder="Representative">
+
+        <th:block th:if="${#fields.hasErrors('representative')}">
+            <div th:errorclass="invalid-input" th:errors="*{representative}"></div>
+        </th:block>
+    </div>
+    <div class="form-group mx-auto">
+        <label for="numPhone">NumPhone</label>
+        <input required type="text" class="form-control" th:field="*{numPhone}" id="numPhone" placeholder="NumPhone">
+
+        <th:block th:if="${#fields.hasErrors('numPhone')}">
+            <div th:errorclass="invalid-input" th:errors="*{numPhone}"></div>
+        </th:block>
+    </div>
+    <div class="form-group mx-auto">
+        <label for="city">City</label>
+        <input required type="text" class="form-control" th:field="*{city}" id="city" placeholder="City">
+
+        <th:block th:if="${#fields.hasErrors('city')}">
+            <div th:errorclass="invalid-input" th:errors="*{city}"></div>
+        </th:block>
+    </div>
+    <div class="form-group mx-auto">
+        <label for="address">Address</label>
+        <input required type="text" class="form-control" th:field="*{address}" id="address" placeholder="Address">
+
+        <th:block th:if="${#fields.hasErrors('address')}">
+            <div th:errorclass="invalid-input" th:errors="*{address}"></div>
+        </th:block>
+    </div>
+    <p>
+    <div class="mx-auto">
+        <input type="submit" class="btn btn-primary btn-lg btn-block" role="button" aria-pressed="true" value="Update Supplier">
+    </div>
+    </p>
+</form>
+</body>
+</html>

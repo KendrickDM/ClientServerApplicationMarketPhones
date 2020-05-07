@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Phone</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <style>
+        @media
+        only screen and (max-width: 1350px),
+        (min-device-width: 280px) and (max-device-width: 1024px) {
+
+            /* Force table to not be like tables anymore */
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+
+            /* Hide table headers (but not display: none;, for accessibility) */
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+
+            tr {
+                border: 1px solid #ccc;
+            }
+
+            td {
+                /* Behave  like a "row" */
+                position: relative;
+            }
+
+            td:before {
+                /* Now like a table header */
+                position: absolute;
+                /* Top/left values mimic padding */
+                top: 6px;
+                left: 210px;
+                width: 45%;
+                padding-right: 70px;
+                white-space: nowrap;
+            }
+            td:nth-of-type(1):before { content: "IdPhone"; }
+            td:nth-of-type(2):before { content: "Manufacturer"; }
+            td:nth-of-type(3):before { content: "Model"; }
+            td:nth-of-type(4):before { content: "Supplier"; }
+            td:nth-of-type(5):before { content: "Color"; }
+            td:nth-of-type(6):before { content: "TypePhone"; }
+            td:nth-of-type(7):before { content: "ScrDiagonal"; }
+            td:nth-of-type(8):before { content: "Platform"; }
+            td:nth-of-type(9):before { content: "BuiltInMemory"; }
+            td:nth-of-type(10):before { content: "ScrResolution"; }
+            td:nth-of-type(11):before { content: "BatteryCapacity"; }
+            td:nth-of-type(12):before { content: "NumSimCards"; }
+            td:nth-of-type(13):before { content: "TypeSimCards"; }
+
+        }
+        .btn-primary{
+            background-color: #343a40;
+            color: white;
+            border-color: darkgray;
+        }
+        .btn-primary:hover{
+            background-color: darkgray;
+            color: white;
+            border-color: darkgray;
+        }
+        .mx-auto{
+            width: 300px;
+        }
+        .header-h1 {
+            position: relative;
+            margin-bottom: .5rem;
+        }
+        .header-h1 h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0;
+            padding-left: 3rem;
+            color: #343a40;
+        }
+        .header-h1 h1::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2.25rem;
+            height: 2.25rem;
+            background: #343a40;
+        }
+        .header-h1 h1::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 2rem;
+            width: 100%;
+            height: .25rem;
+            background-color: #343a40;
+        }
+        .dropdown-menu{
+            background-color:#343a40;
+        }
+        .dropdown-item{
+            background-color: #343a40;
+        }
+        .dropdown-item:hover{
+            background-color: darkgray;
+        }
+        .table-sm{
+            white-space: nowrap;
+        }
+        .table-bordered{
+            background-color: white;
+        }
+
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a class="navbar-brand" href="#">MarketPhones</a>
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="/main-page">HOME</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                TABLES
+            </a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item nav-link" href="/phones">Phone</a>
+                <a class="dropdown-item nav-link" href="/manufacturers">Manufacturer</a>
+                <a class="dropdown-item nav-link" href="/suppliers">Supplier</a>
+                <a class="dropdown-item nav-link" href="/customers">Customer</a>
+                <a class="dropdown-item nav-link" href="/staffs">Staff</a>
+                <a class="dropdown-item nav-link" href="/orders">Orders Phones</a>
+            </div>
+        </li>
+    </ul>
+</nav>
+<div th:switch="${phones}">
+    <h2 th:case="null">No phones found!</h2>
+    <div th:case="*" >
+        <div class="header-h1">
+        <h1>Phone</h1>
+        </div>
+        <p>
+        <div class="table-responsive col-lg-12 col-md-8 col-sm-8 col-xs-8">
+        <table class="table  table-sm table-bordered table-hover">
+            <thead class="thead-dark">
+            <tr>
+                <th class="text-center">IdPhone</th>
+                <th class="text-center">Manufacturer</th>
+                <th class="text-center">Model</th>
+                <th class="text-center">Supplier</th>
+                <th class="text-center">Color</th>
+                <th class="text-center">TypePhone</th>
+                <th class="text-center">ScrDiagonal</th>
+                <th class="text-center">Platform</th>
+                <th class="text-center">BuiltInMemory</th>
+                <th class="text-center">ScrResolution</th>
+                <th class="text-center">BatteryCapacity</th>
+                <th class="text-center">NumSimCards</th>
+                <th class="text-center">TypeSimCards</th>
+                <th class="text-center">Edit</th>
+                <th class="text-center">Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="phone : ${phones}">
+                <td th:text="${phone.idP}"></td>
+                <td th:each="manufacturer : ${manufacturers}" th:value="${manufacturer.idM}" th:text="${manufacturer.manf}" th:if="${phone.idManufacturer == manufacturer.idM}"></td>
+                <td th:text="${phone.model}"></td>
+                <td th:each="supplier : ${suppliers}" th:value="${supplier.idS}" th:text="${supplier.organization}" th:if="${phone.idSupplier == supplier.idS}"></td>
+                <td th:text="${phone.color}"></td>
+                <td th:text="${phone.typePhone}"></td>
+                <td th:text="${phone.scrDiagonal}"></td>
+                <td th:text="${phone.platform}"></td>
+                <td th:text="${phone.builtInMemory}"></td>
+                <td th:text="${phone.scrResolution}"></td>
+                <td th:text="${phone.batteryCapacity}"></td>
+                <td th:text="${phone.numSimCards}"></td>
+                <td th:text="${phone.typeSimCards}"></td>
+                <td class="text-center"><a th:href="@{phone-update/{idP}(idP=${phone.idP})}">Edit</a></td>
+                <td class="text-center"><a th:href="@{phone-delete/{idP}(idP=${phone.idP})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
+    <div class="mx-auto">
+    <p><a href="/phone-create" class="btn btn-primary btn-lg btn-block" role="button" aria-pressed="true">Add Phone</a></p>
+    </div>
+</div>
+</body>
+</html>
